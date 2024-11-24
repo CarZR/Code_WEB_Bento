@@ -16,25 +16,10 @@
             <h1>Charles Aznavour</h1>
             <p>72ans de carrière</p>
         </section>
-
-        <!--<img class="profile" src="https://images.rtl.fr/~c/2000v2000/rtl/www/1313714-portrait-de-charles-aznavour-en-2017.jpg" alt="Charles Aznavour">-->
         
         <p class="profile"> </p>
 
-        <!--
         <article class="Azn1 flop">
-            <img src="#" alt="#">
-            <button class="listen">Listen</button>
-        </article>
-
-        <article class="Azn2 flop">
-            <img src="#" alt="#">
-            <button class="listen">Listen</button>
-        </article>
-        -->
-
-        <article class="Azn1 flop">
-            <!--<img src="https://images-na.ssl-images-amazon.com/images/I/71Tdc83uvqL._SL1300_.jpg" alt="Charles Aznavour - La Bohème">-->
             <p class="imgA"></p>
             <a href="https://deezer.page.link/7xH6rzkBbjS1j5EQ7"> 
                 <button class="listen">Listen</button>
@@ -42,18 +27,11 @@
         </article>
 
         <article class="Azn2 flop">
-            <!--<img src="https://images-na.ssl-images-amazon.com/images/I/714j%2B%2BlFODL._SL1300_.jpg" alt="Charles Aznavour - Platinum Collection">-->
             <p class="imgA"></p>
             <a href="https://open.spotify.com/intl-fr/track/1WvvmEowf7hiz5EnyAwtTj?si=e4bae7c9980141fe" >
                 <button class="listen">Listen</button>
             </a>
         </article>
-
-
-
-
-
-
 
         <article class="Spotify flop">
             <img class="logo logS" src="https://static.wixstatic.com/media/2397a0_6be8d79af7a443028bbc72ac7d99ec63~mv2.png " alt="logo Spotify">
@@ -64,7 +42,7 @@
         <article class="Deezer flop">
                 <img class= "logo logD" src="https://static.wixstatic.com/media/2397a0_26086a46c8df4a9bb14baf02cc18fa10~mv2.png" alt="logo Deezer">
                 <h2>Deezer</h2>
-                <button class="listen2 disparait">Listen</button>
+                <a href="https://deezer.page.link/aFqyBVFXhbcKpyTW8"><button class="listen2 disparait">Listen</button></a>
         </article>
 
         <article class="youtube flop">
@@ -102,24 +80,30 @@
 
 <script>
 
-    document.querySelector("input").addEventListener("keyup",change)
+    document.querySelector("input").addEventListener("keyup",change)        //quand on une touche du clavier se relève (qu'on vient de cliquer dessus) => lancer fonction change
+    document.querySelector("input").addEventListener("click",select)        //quand on clique sur le input => lancer la fonction select
 
     function change(){
-        if (document.querySelector("input").value == "me@site.com"){
-            document.querySelector("input").style.opacity = 0.3
-        }else{
-            document.querySelector("input").style.opacity = 1
+        if (document.querySelector("input").value != "me@site.com"){        //si on a changer la valeur de l'input
+            document.querySelector("input").style.opacity = 1               //on met l'opacité à 1 pour mettre en valeur NOTRE texte
         }
 
-        if (document.querySelector("input").value == ""){
-            document.querySelector("input").value = "me@site.com";
-            document.querySelector("input").style.opacity = 0.3}
-    }
+        if (document.querySelector("input").value == ""){                   //si input est vide (plus de texte dedans)
+            document.querySelector("input").value = "me@site.com";          //on remet la valeur par défault dans la barre
+            document.querySelector("input").style.opacity = 0.3             //on repasse l'opacité à 0.3
+            document.querySelector("input").blur()}                         //on deselectionne la zone de texte
+        }
+    
+        function select(){
+            if (document.querySelector("input").value == "me@site.com" && document.querySelector("input").style.opacity == 0.3){        
+                document.querySelector("input").value = ""                                                                             
+            }
+            //si c'est la valeur par défault ET que opacité=0.3
+            //on vide la zone de texte pour laisser place au nôtre
 
-    //let LogoDeezer= document.querySelector(".logD").src
-    //console.log(LogoDeezer)
-
-
+            //utiliser cette fonction sert à inscrir plus rapidement nos informations dans la zone
+            // SI le texte par default etait bien le texte par défault et non le texte par défault réécrit par l'utilisateur
+        }
 
 
 </script>
