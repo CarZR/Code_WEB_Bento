@@ -102,7 +102,7 @@
 
 <script>
 
-    document.querySelector("input").addEventListener("mousemove",change)
+    document.querySelector("input").addEventListener("keyup",change)
 
     function change(){
         if (document.querySelector("input").value == "me@site.com"){
@@ -113,7 +113,7 @@
 
         if (document.querySelector("input").value == ""){
             document.querySelector("input").value = "me@site.com";
-            document.querySelector("input").blur()}
+            document.querySelector("input").style.opacity = 0.3}
     }
 
     //let LogoDeezer= document.querySelector(".logD").src
