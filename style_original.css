@@ -88,7 +88,7 @@ body{
 
 .logo{
     max-width: 48px;
-    height: 100%;
+    height: auto;
     padding : 0.3rem;
 }
 
@@ -101,11 +101,69 @@ body{
     border-radius: 8px;
 }
 
+.listen2{
+    border-radius: 2rem;
+    border : none;
+    font-weight : bolder;
+    padding : .9rem;
+    padding-left : 2.5rem;
+    padding-right : 2.5rem;
+    margin-bottom : 2rem;
+    font-size : large;
+}
+
+
 
 /**/
 /**/
 /*TETE*/
 .profile{margin:2rem; max-width: 80%;}
+
+
+/*Card plateforme musique*/
+
+.flux {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.flop{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: .5rem;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    margin : .8rem;
+    font-size: x-large;
+}
+
+
+/*Spotify*/
+
+.Spotify{
+    background-color: var(--spotify-fond);
+    color : var(--spotify-items);
+}
+
+.Spotify .listen2{
+    background-color: var(--spotify-items);
+    color : var(--spotify-fond);
+}
+
+
+/*Deezer*/
+
+.Deezer {
+    background-color:var(--deezer-fond);
+    color: white;
+}
+
+.Deezer .listen2 {
+    background-color:var(--deezer-logo);
+    color: var(--deezer-fond);
+}
+
 
 
 /**/
@@ -190,6 +248,7 @@ input{opacity: 30%}
 /*J'ai fais ça le temps d'encoder ma partie (pour pas être dérangée par le reste)*/
 /*mais il faudra le supprimer apres */
 
+/*
 .Spotify{
     background-color: green;
 }
@@ -198,3 +257,4 @@ input{opacity: 30%}
     background-color: green;
 }
 
+*/

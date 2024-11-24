@@ -1,0 +1,385 @@
+html{
+    color-scheme: light dark;   /*detecte le mode de couleur du navigateur*/
+}
+
+
+:root{
+
+    /*  COULEURS    */
+    --fond-l : #E9ECEF;
+    --fond-d : #32363A;
+
+    --titre-fond-l: #FFFFFF;
+    --titre-fond-d: #545454;
+
+    --titre-l: #32363A;
+    --titre-d: #FFFFFF;
+
+    --listen1-l: #FFFFFF;
+    --listen1-d: #000000;
+
+    --spotify-fond-l: #1DB954;
+    --spotify-fond-d: #1DB954;
+
+    --spotify-items--l: #FFFFFF;
+    --spotify-items--d: #32363A;
+
+    --deezer-fond-l: #A238FF;
+    --deezer-fond-d: #000000;
+
+    --deezer-logo-l:#000000;
+    --deezer-logo-d: #A238FF;
+
+    --youtube-fond-l: #FF0000;
+    --youtube-fond-d: #C01C1C;
+
+    --newsletter-fond-l: #FFFFFF;
+    --newsletter-fond-d: #290060;
+
+    --newsletter-items-l: #290060;
+    --newsletter-items-d: #FFFFFF;
+
+    
+
+    /*parametre les couleurs en fonction du mode du navigateur*/
+    --fond: light-dark(var(--fond-l), var(--fond-d));
+    --titre-fond: light-dark(var(--titre-fond-l), var(--titre-fond-d));
+    --titre: light-dark(var(--titre-l), var(--titre-d));
+    --listen1: light-dark(var(--listen1-l), var(--listen1-d));
+    --spotify-fond: light-dark(var(--spotify-fond-l), var(--spotify-fond-d));
+    --spotify-items: light-dark(var(--spotify-items--l), var(--spotify-items--d));
+    --deezer-fond: light-dark(var(--deezer-fond-l), var(--deezer-fond-d));
+    --deezer-logo: light-dark(var(--deezer-logo-l), var(--deezer-logo-d));
+    --youtube-fond: light-dark(var(--youtube-fond-l), var(--youtube-fond-d));
+    --newsletter-fond: light-dark(var(--newsletter-fond-l), var(--newsletter-fond-d));
+    --newsletter-items: light-dark(var(--newsletter-items-l), var(--newsletter-items-d));
+
+}
+
+
+/*Pour que le logo change de couleur en fonction du mode (deux sources différentes)*/
+@media (prefers-color-scheme: dark) {   /* Si le mode dunav. est en sombre :*/
+    .logS{content: url("https://static.wixstatic.com/media/2397a0_3f9cc99f74f74538af70b461953bae92~mv2.png")}
+    .logD{content: url("https://static.wixstatic.com/media/2397a0_2aa6cf8d71d844e6b19ae42c93669839~mv2.png")}
+} /* ...le logo change tout seul pour une autre image (respectivement logos de Spotify et Deezer)*/
+
+
+/*--------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+
+/**/
+/**/
+/**/
+/*GENERAL*/
+
+body{
+    font-family: sans-serif ;       /*définition de la police par défault*/
+    background-color: var(--fond);  /*définition de la couleur de fond par défault de la page*/
+}
+
+.logo{
+    max-width: 48px;    /*taille par défault des logos (on mets "max" pour pas pixeliser le logo s'il était plus petit)*/
+    height: auto;       /*height en auto pour conserver les proportion du logo (ne pas le déformer)*/
+    padding : 0.3rem;   
+}
+
+.flop{                        /*flop = chaque élément du flux*/
+    margin : 0rem 0rem;           /*Les éléments en eux-même n'ont pas de marges. ESPACEMENT CENTRALISÉ DANS FLUX*/
+    padding: 1.5rem;              /*Chaque élément à un padding pour que leurs items ne touchent pas le bord*/
+    border-radius: .5rem;         /*Chaque élément a les bords arrondis*/
+    gap : 0rem 1.5rem;            /*gap de 0 entre 2éléments cote à cote, et 1.5rem entre 2 éléments l'un au dessus de l'autre*/
+    
+    /*LE GAP ??????????? UTILE ???????*/
+    
+    border: 1px solid rgba(0, 0, 0, 0.20);      /*bord plus foncé ajouté sur tous les éléments (noir d'opacité 20%)*/    
+    font-size : large;                            /*taille de police par défault pour chaque élément*/ 
+    /*POURQUOI PAS LE METTRE DANS LE BODY ???*/
+
+    display : flex;
+    flex-direction: column;                        /*chaque élément va ordonner ses enfants en colonne (ex : bouton spotify en dessous du "Spotify", en dessous du logo))*/
+}
+
+.listen2{                                   /*défintion des boutons pour spotify et deezer*/
+    border-radius: 2rem;                    /*arrondi des angles*/
+    border : none;                          /*le bord est invisible - pas de contour*/
+    font-weight : bolder;
+    padding : .9rem 2.5rem;                 /*0.9rem de padding en haut et en bas. 2.5rem de padding sur les cotes*/
+    font-size : medium;
+}
+
+
+/*Ensemble du document*/
+.flux {
+    margin:1.5rem 2rem 1rem;        /*1.5rem de marge en haut, 2rem sur les cotes, 1rem en bas (entre le doc et les bords de la page)*/
+    max-width: 50rem;               /*Empeche le doc de s'étendre à l'infinie. Au bout d'un moment il ne grandit plus avec la page*/
+}
+
+
+
+/*--------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+
+/**/
+/**/
+/*TETE*/
+
+.profile{               /*définition de l'image dans cette zone de "paragraphe"*/
+    background-image: url("https://images.rtl.fr/~c/2000v2000/rtl/www/1313714-portrait-de-charles-aznavour-en-2017.jpg");
+    background-size: cover;     /*ne déforme pas l'image et couvre simplement la zone, an gardant les proportions, mais le plus grand possible*/
+    border-radius: 8px;
+    margin : 0rem;              /*pour couper la propriété par défaut des paragraphes sur celui-la (qui mets automatiquement de la marge en haut et en bas)*/
+}
+
+
+.imgA{
+    margin : 0rem;
+    padding-top: 80%;
+}
+
+.Azn1{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/71Tdc83uvqL._SL1300_.jpg");
+    background-size: cover;
+    border : none;
+}
+.Azn2{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/714j%2B%2BlFODL._SL1300_.jpg");
+    background-size: cover;
+    border : none;
+}
+
+/*Spotify*/
+
+.Spotify{
+    background-color: var(--spotify-fond);
+    color : var(--spotify-items);
+    align-items: center;                /*propriété ici et non sur flop parce que youtube et newsletter ne sont pas centrés mais font parti de flop*/
+}
+
+.Spotify .listen2{
+    background-color: var(--spotify-items);
+    color : var(--spotify-fond);
+}
+
+
+/*Deezer*/
+
+.Deezer {
+    background-color:var(--deezer-fond);
+    color: white;
+    align-items: center;
+}
+
+.Deezer .listen2 {
+    background-color:var(--deezer-logo);
+    color: var(--deezer-fond);
+}
+
+
+
+
+/**/
+/**/
+/*YOUTUBE*/
+
+/*.ChaineYT{font-weight: large;}*/ /*utilité ?????*/
+
+.youtube{                                       /*la boite de youtube*/
+    background-color: var(--youtube-fond);
+    display : flex;
+    flex-direction: column;
+    align-items: left ;
+    color : white;
+}
+
+.YoutTitre{                                    /*logo + nom "Youtube"*/
+    display : flex;
+    flex-direction: row;
+    align-items: center;
+    gap:1.5rem;                 /*1.5rem entre le logo et le nom*/
+}
+
+.abos{margin-top: -0.5rem}                     /*le nb d'abos et la chaine (qui disparaissent format mobile)*/
+
+/*FIN YOUTUBE*/
+
+
+
+
+/**/
+/**/
+/*NEWSLETTER*/
+
+.news{
+    color : var(--newsletter-items);
+    background-color: var(--newsletter-fond);
+    gap : 1rem
+}
+
+h3{margin: 0rem;}    /*La phrase "Subscribe to my..." UNIQUEMENT*/
+
+
+.mail{
+    display: flex;                  /*ne concerne que la barre liée au mail (@ + barre de texte + boutton)*/
+    flex-direction: row;
+    align-items: center;
+    border : 1px solid #D5E0EA;     /*Ajoute un contour blanc*/
+    border-radius: 8px;
+    padding:8px;                       /*Pour espacer la bordure des éléments*/
+
+}
+
+.mail>*{margin : 0.3rem}            /*la marge des éléments fait 0.3rem => coupe la propriété par défaut du paragraphe ("@") avec un marge de 1rem en haut et en bas*/
+
+.zoneTEXTE{
+    background-color: var(--newsletter-fond);
+    border : 0px solid #D5E0EA;
+    width: 100%;                                /*la zone d'écriture prend toute la place qu'il reste, pour remplir la boite*/
+}
+
+input{opacity: 30%}                             /*par défault, le texte de remplacement "me@site.com" a une opacité de 30%.
+                                                L'opactité change ensuite en fonction des interactions grace au JS dans le doc HTML*/
+
+.ButtGo{
+    background-color: var(--newsletter-items);
+    color : var(--newsletter-fond);
+    border-radius: 12px;
+    padding:8px;
+}
+
+/*FIN NEWSLETTER*/
+
+
+
+/*--------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+
+/**/
+/**/
+/**/
+/*RESPONSIVE ET POINTS DE RUPTURE*/
+
+@media only screen and (min-width: 29rem) {  /*adopte ces conportements SI la taille de l'écran dépasse 29rem*/
+    /* tablettes et ordinateurs */
+
+    body{
+        display : grid;
+        grid-template-columns: 1fr min(28rem, auto) 1fr;
+        grid-template-areas: ". tout .";                   
+    }
+    /*Cette propriété sert à ce que le flux soit toujours centré. 
+    Le body a 3 colonnes, le flux se trouve dans cette du milieu (taille : auto)
+    et les colonnes de gauche et de droite font la même taille (1fr).
+    Le flux se retrouve donc FORCEMENT au milieu de la page.
+    
+    Ceci est fait pour réglé le pb posé avec la solution 1 - justify-content : center
+    le pb était que oui, le flux était centré, mais il ne s'étandait pas plus que
+    nécessaire pour que ses enfaants soient de bonne taille.*/
+
+    .flux{
+        grid-area: tout;
+        display : grid;                     /*Le flux a son propre grid. Grid parce que flex ne permettait pas de réaliser le responsive souhaité (notamment par rapport au nom "titre flop")*/
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;                        /*espacement centralisé entre les flop, puisqu'ils n'ont pas de marge*/
+        grid-template-areas:
+            "header header"
+            "pict pict"
+            "main1 main2"
+            "main3 main4"
+            "foot foot"
+            "foot2 foot2";
+    }
+
+    
+    .titre{grid-area: header;}
+
+    .profile{
+        background-position-y: 0rem;        /*positionnement de l'image dans la cover*/
+        grid-area: pict;
+        object-fit:cover;
+        padding-top: 60%;                   /*Sert à choisir la proportion entre le width et le heigth => widht*0.6 = height
+                                            Comme l'image est dans une zone (c'est le fond), on définit les proportions de la zone (et non de l'image)
+                                            Puis l'image vient couvrir cette zone, on conservant ses propres proportions et en coupant ce qui dépasse*/
+    }
+
+    .Azn1{grid-area: main1;}
+    .Azn2{grid-area: main2;}
+    .Spotify{grid-area: main3;}
+    .Deezer{grid-area: main4;}
+    .youtube{grid-area: foot;}
+    .news{grid-area: foot2;}
+
+    
+
+}
+/*--------------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 28.9rem) {       /*adopte ce comportement si la taille de l'écran est plus petit que 28.9rem*/
+    /* téléphone */
+    .disparait{display : none }                 /*Fait disparaitre les éléments de class "disparait",
+                                                sans les prendre en compte dans les calculs de positionnement du reste*/
+
+    h2{font-size : medium}              /*Nouvelle définition des tailles de police*/
+    h3{font-size: small;}
+    p{font-size: x-small;}
+    
+    .logo{
+        max-width: 24px;                /*rétrécie les logos sur mobile*/
+        height: auto;
+    }
+
+    .flux{
+        margin : .5rem;
+        display:grid;
+        grid-template-columns: 2fr 3fr;         /*l'image fera 2/5 de la surface de flux, alors que le reste fera 3/5*/
+        gap : 1rem;
+
+        grid-template-areas:             /*attribution des modules du tableau à des zones/noms/catégories*/
+            "header main1"
+            "header main2"
+            "header main3"
+            "header main4"
+            "header main5"
+            "header main6"
+            "footer footer";            /*les deux colonnes de cette ligne feront parties de la même zone "footer"*/
+    }
+
+    .profile{grid-area: header}
+    .titre{grid-area: main1;}
+    .Azn1{grid-area: main2;}
+    .Azn2{grid-area: main3;}
+    .Spotify{grid-area: main4;}
+    .Deezer{grid-area: main5;}
+    .youtube{grid-area: main6;}
+    .news{grid-area: footer;}
+
+
+    .flop{
+        margin : 0rem;              /*pas de margin parce que tout est centralisé dans les gap du flux*/
+        padding: .5rem;
+        gap : .5rem .3rem          /*0.5rem de gap entre des éléments au dessus les uns des autres
+                                    et 0.3rem de gap entre des éléments cotes à cotes*/
+    }
+
+    .YoutTitre{gap : .3rem}         /*à refaire ici parce que les elements du flop de Youtube ne sont pas "Youtube" et son logo
+                                    mais un groupe (avec "youtube"+logo) et un autre groupe (qui disparait format mobile).
+                                    Le gap de flop ne s'applique donc pas, puisqu'il n'y a qu'un élément (groupe) dans Youtube*/
+
+    .profile{
+        margin : 0rem;
+        background-position-x: 38%;}      /*positionnement de l'image en backgroupe dans la zone définie*/
+
+
+    .Spotify{flex-direction: row;}
+    .Deezer{flex-direction: row;}
+
+    .mail{padding : .2rem .5rem}
+
+    h3{margin : 0rem}
+    .ButtGo{padding : .3rem}
+
+
+
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
