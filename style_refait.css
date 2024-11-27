@@ -74,9 +74,11 @@ html{
 /*GENERAL*/
 
 body{
-    font-family: sans-serif ;       /*définition de la police par défault*/
+    font-family:  sans-serif ;       /*définition de la police par défault*/
     background-color: var(--fond);  /*définition de la couleur de fond par défault de la page*/
 }
+
+h1{font-weight: 500;}
 
 .logo{
     max-width: 48px;    /*taille par défault des logos (on mets "max" pour pas pixeliser le logo s'il était plus petit)*/
@@ -98,6 +100,16 @@ body{
 
     display : flex;
     flex-direction: column;                        /*chaque élément va ordonner ses enfants en colonne (ex : bouton spotify en dessous du "Spotify", en dessous du logo))*/
+}
+
+.listen{
+    border-radius: 2rem;                    /*arrondi des angles*/
+    border : none;                          /*le bord est invisible - pas de contour*/
+    font-weight : bolder;
+    padding : .9rem 2.5rem;                 /*0.9rem de padding en haut et en bas. 2.5rem de padding sur les cotes*/
+    font-size : medium;
+    background-color : var(--listen1);
+    color: var(--titre);
 }
 
 .listen2{                                   /*défintion des boutons pour spotify et deezer*/
@@ -124,6 +136,14 @@ body{
 /**/
 /*TETE*/
 
+.titre{
+    color: var(--titre);
+    background-color: var(--titre-fond);
+    text-align : center;
+}
+
+.titre>*{margin : .1rem;}
+
 .profile{               /*définition de l'image dans cette zone de "paragraphe"*/
     background-image: url("https://images.rtl.fr/~c/2000v2000/rtl/www/1313714-portrait-de-charles-aznavour-en-2017.jpg");
     background-size: cover;     /*ne déforme pas l'image et couvre simplement la zone, an gardant les proportions, mais le plus grand possible*/
@@ -147,6 +167,10 @@ body{
     background-size: cover;
     border : none;
 }
+
+.Azn1 .listen{  }
+.Azn2 .listen{  }
+
 
 /*Spotify*/
 
@@ -314,7 +338,7 @@ input{opacity: 30%}                             /*par défault, le texte de remp
 
 }
 /*--------------------------------------------------------------------------------------------------------*/
-@media only screen and (max-width: 28.9rem) {       /*adopte ce comportement si la taille de l'écran est plus petit que 28.9rem*/
+@media only screen and (max-width: 28.999rem) {       /*adopte ce comportement si la taille de l'écran est plus petit que 28.9rem*/
     /* téléphone */
     .disparait{display : none }                 /*Fait disparaitre les éléments de class "disparait",
                                                 sans les prendre en compte dans les calculs de positionnement du reste*/
@@ -377,9 +401,6 @@ input{opacity: 30%}                             /*par défault, le texte de remp
 
     h3{margin : 0rem}
     .ButtGo{padding : .3rem}
-
-
-
 }
 
 /*--------------------------------------------------------------------------------------------------------*/

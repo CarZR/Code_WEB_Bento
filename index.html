@@ -14,7 +14,7 @@
 
         <section class="titre flop">
             <h1>Charles Aznavour</h1>
-            <p>72ans de carrière</p>
+            <p>72 years of career</p>
         </section>
         
         <p class="profile"> </p>
@@ -61,7 +61,7 @@
             <h3>Subscribe to my monthly newletter</h3>
             <div class="mail">
                 <p>@</p>
-                <input class="zoneTEXTE" name="AdresseMail" value="me@site.com" type="text"/>
+                <input class="zoneTEXTE Default" name="AdresseMail" value="me@site.com" type="text"/>
                 <a href="#"><button class="ButtGo">Go!</button></a>
             </div>
         </article>
@@ -71,8 +71,8 @@
 
 
 
-    <script>console.log(document.querySelector(".zoneTEXTE").value)</script>
-
+    <!--    <script>console.log(document.querySelector(".zoneTEXTE").value)</script>
+    -->
 </body>
 
 
@@ -80,8 +80,39 @@
 
 <script>
 
-    document.querySelector("input").addEventListener("keyup",change)        //quand on une touche du clavier se relève (qu'on vient de cliquer dessus) => lancer fonction change
-    document.querySelector("input").addEventListener("click",select)        //quand on clique sur le input => lancer la fonction select
+    document.querySelector("body").addEventListener("click",change)        //quand on une touche du clavier se relève (qu'on vient de cliquer dessus) => lancer fonction change
+    document.querySelector("input").onblur = inpBL;
+    document.querySelector("input").onfocus = inpFOC;
+    //document.querySelector("input").addEventListener("click",select)        //quand on clique sur le input => lancer la fonction select
+
+    //console.log(document.querySelector("input").onblur);
+
+    function inpBL(){document.querySelector("input").classList.add("BLUR")}
+    function inpFOC(){document.querySelector("input").classList.remove("BLUR")}
+
+    function change(){
+        if (document.querySelector("input").classList.contains("Default")){
+            document.querySelector("input").value = "";
+            document.querySelector("input").style.opacity = 1;
+            document.querySelector("input").classList.remove("Default")
+        }else{
+            console.log(document.querySelector("input").classList.contains("BLUR"))
+            if (document.querySelector("input").value == "" && document.querySelector("input").classList.contains("BLUR")){
+                document.querySelector("input").value = "me@site.com";
+                document.querySelector("input").style.opacity = 0.3;
+                document.querySelector("input").classList.add("Default");
+            }
+        }
+    }
+
+</script>
+
+
+</html>
+
+
+
+<!--
 
     function change(){
         if (document.querySelector("input").value != "me@site.com"){        //si on a changer la valeur de l'input
@@ -90,10 +121,11 @@
 
         if (document.querySelector("input").value == ""){                   //si input est vide (plus de texte dedans)
             document.querySelector("input").value = "me@site.com";          //on remet la valeur par défault dans la barre
-            document.querySelector("input").style.opacity = 0.3             //on repasse l'opacité à 0.3
+            document.querySelector("input").style.opacity = 0.3;             //on repasse l'opacité à 0.3
             document.querySelector("input").blur()}                         //on deselectionne la zone de texte
         }
     
+
         function select(){
             if (document.querySelector("input").value == "me@site.com" && document.querySelector("input").style.opacity == 0.3){        
                 document.querySelector("input").value = ""                                                                             
@@ -105,14 +137,7 @@
             // SI le texte par default etait bien le texte par défault et non le texte par défault réécrit par l'utilisateur
         }
 
-
-</script>
-
-
-</html>
-
-
-
+-->
 
 
 <!--
