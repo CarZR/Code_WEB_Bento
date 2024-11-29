@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charles Aznavour</title>
-    <link rel="stylesheet" href="style_refait.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-
     <section class="flux">
-
 
         <section class="titre flop">
             <h1>Charles Aznavour</h1>
@@ -53,7 +51,7 @@
     
             <div class="disparait">
                 <p class="ChaineYT">@aznavourofficial</p>
-                <p class="abos">11,8k abonnés</p>
+                <p class="abos">11,8k subscribers</p>
             </div>
         </article>
 
@@ -68,11 +66,6 @@
 
     </section>
 
-
-
-
-    <!--    <script>console.log(document.querySelector(".zoneTEXTE").value)</script>
-    -->
 </body>
 
 
@@ -80,64 +73,41 @@
 
 <script>
 
-    document.querySelector("body").addEventListener("click",change)        //quand on une touche du clavier se relève (qu'on vient de cliquer dessus) => lancer fonction change
-    document.querySelector("input").onblur = inpBL;
-    document.querySelector("input").onfocus = inpFOC;
-    //document.querySelector("input").addEventListener("click",select)        //quand on clique sur le input => lancer la fonction select
+    document.querySelector("body").addEventListener("click",RetourDefault)   //quand on uclick sur l'écran (n'importe où) => lancer fonction change()
+    document.querySelector("input").addEventListener("click",Write)   //quand on uclick sur l'écran (n'importe où) => lancer fonction change()
 
-    //console.log(document.querySelector("input").onblur);
+    document.querySelector("input").onblur = inpBL;                   //quand input est inactif (que l'utilisateur a cliqué ailleurs pour faire autre chose)
+    document.querySelector("input").onfocus = inpFOC;                 //quand l'utilisateur utilise input (la barre de texte est présente dans la zone de texte)
 
-    function inpBL(){document.querySelector("input").classList.add("BLUR")}
-    function inpFOC(){document.querySelector("input").classList.remove("BLUR")}
+    function inpBL(){document.querySelector("input").classList.add("BLUR")}         //Pour connaître l'état de la zone de texte (dans les conditions de l'autre fonction)
+    function inpFOC(){document.querySelector("input").classList.remove("BLUR")}     // si BLUR est une classe de input, alors l'utilisateur n'utilise pas la zone de texte
 
-    function change(){
-        if (document.querySelector("input").classList.contains("Default")){
-            document.querySelector("input").value = "";
-            document.querySelector("input").style.opacity = 1;
-            document.querySelector("input").classList.remove("Default")
-        }else{
-            console.log(document.querySelector("input").classList.contains("BLUR"))
-            if (document.querySelector("input").value == "" && document.querySelector("input").classList.contains("BLUR")){
-                document.querySelector("input").value = "me@site.com";
+    function RetourDefault(){
+        if (!(document.querySelector("input").classList.contains("Default"))){
+            if (document.querySelector("input").value == "" && document.querySelector("input").classList.contains("BLUR")){     //si input est vide ET la zone de texte est déselectionnée
+                document.querySelector("input").value = "me@site.com";      //Le texte redevient celui par défault, opacité 0.3 et reprend la classe Default.
                 document.querySelector("input").style.opacity = 0.3;
                 document.querySelector("input").classList.add("Default");
+                
+                //L'ajout de la condition BLUR évite que input se remete automatiquement
+                //en valeur par défault lorsque l'utilisateur avait simplement effacé du texte
+                //pour changer l'adresse e-mail qu'il veut mettre. Ca créait un bug, aussi.
             }
+        }
+    }
+
+    function Write(){
+        if (document.querySelector("input").classList.contains("Default")){         //Pour savoir si le texte a cette valeur par défault, ou si L'UTILISATEUR a recopier la valeur par défault
+            document.querySelector("input").value = "";                             //La zone de texte se vide automatiquement
+            document.querySelector("input").style.opacity = 1;                      //Et l'opacité revient à 1
+            document.querySelector("input").classList.remove("Default");            //Ce n'est plus une valeur par défault mais bien le texte de l'utilisateur
         }
     }
 
 </script>
 
-
 </html>
 
-
-
-<!--
-
-    function change(){
-        if (document.querySelector("input").value != "me@site.com"){        //si on a changer la valeur de l'input
-            document.querySelector("input").style.opacity = 1               //on met l'opacité à 1 pour mettre en valeur NOTRE texte
-        }
-
-        if (document.querySelector("input").value == ""){                   //si input est vide (plus de texte dedans)
-            document.querySelector("input").value = "me@site.com";          //on remet la valeur par défault dans la barre
-            document.querySelector("input").style.opacity = 0.3;             //on repasse l'opacité à 0.3
-            document.querySelector("input").blur()}                         //on deselectionne la zone de texte
-        }
-    
-
-        function select(){
-            if (document.querySelector("input").value == "me@site.com" && document.querySelector("input").style.opacity == 0.3){        
-                document.querySelector("input").value = ""                                                                             
-            }
-            //si c'est la valeur par défault ET que opacité=0.3
-            //on vide la zone de texte pour laisser place au nôtre
-
-            //utiliser cette fonction sert à inscrir plus rapidement nos informations dans la zone
-            // SI le texte par default etait bien le texte par défault et non le texte par défault réécrit par l'utilisateur
-        }
-
--->
 
 
 <!--

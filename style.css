@@ -2,7 +2,6 @@ html{
     color-scheme: light dark;   /*detecte le mode de couleur du navigateur*/
 }
 
-
 :root{
 
     /*  COULEURS    */
@@ -27,7 +26,7 @@ html{
     --deezer-fond-l: #A238FF;
     --deezer-fond-d: #000000;
 
-    --deezer-logo-l:#000000;
+    --deezer-logo-l:#FFFFFF;
     --deezer-logo-d: #A238FF;
 
     --youtube-fond-l: #FF0000;
@@ -38,8 +37,6 @@ html{
 
     --newsletter-items-l: #290060;
     --newsletter-items-d: #FFFFFF;
-
-    
 
     /*parametre les couleurs en fonction du mode du navigateur*/
     --fond: light-dark(var(--fond-l), var(--fond-d));
@@ -53,9 +50,7 @@ html{
     --youtube-fond: light-dark(var(--youtube-fond-l), var(--youtube-fond-d));
     --newsletter-fond: light-dark(var(--newsletter-fond-l), var(--newsletter-fond-d));
     --newsletter-items: light-dark(var(--newsletter-items-l), var(--newsletter-items-d));
-
 }
-
 
 /*Pour que le logo change de couleur en fonction du mode (deux sources différentes)*/
 @media (prefers-color-scheme: dark) {   /* Si le mode dunav. est en sombre :*/
@@ -76,6 +71,7 @@ html{
 body{
     font-family:  sans-serif ;       /*définition de la police par défault*/
     background-color: var(--fond);  /*définition de la couleur de fond par défault de la page*/
+    font-size : large;              /*Taille par défault des éléments*/
 }
 
 h1{font-weight: 500;}
@@ -90,23 +86,17 @@ h1{font-weight: 500;}
     margin : 0rem 0rem;           /*Les éléments en eux-même n'ont pas de marges. ESPACEMENT CENTRALISÉ DANS FLUX*/
     padding: 1.5rem;              /*Chaque élément à un padding pour que leurs items ne touchent pas le bord*/
     border-radius: .5rem;         /*Chaque élément a les bords arrondis*/
-    gap : 0rem 1.5rem;            /*gap de 0 entre 2éléments cote à cote, et 1.5rem entre 2 éléments l'un au dessus de l'autre*/
-    
-    /*LE GAP ??????????? UTILE ???????*/
-    
     border: 1px solid rgba(0, 0, 0, 0.20);      /*bord plus foncé ajouté sur tous les éléments (noir d'opacité 20%)*/    
-    font-size : large;                            /*taille de police par défault pour chaque élément*/ 
-    /*POURQUOI PAS LE METTRE DANS LE BODY ???*/
-
+           
     display : flex;
-    flex-direction: column;                        /*chaque élément va ordonner ses enfants en colonne (ex : bouton spotify en dessous du "Spotify", en dessous du logo))*/
+    flex-direction: column;        /*chaque élément va ordonner ses enfants en colonne (ex : bouton spotify en dessous du "Spotify", en dessous du logo))*/
 }
 
 .listen{
     border-radius: 2rem;                    /*arrondi des angles*/
     border : none;                          /*le bord est invisible - pas de contour*/
-    font-weight : bolder;
-    padding : .9rem 2.5rem;                 /*0.9rem de padding en haut et en bas. 2.5rem de padding sur les cotes*/
+    font-weight : 700;
+    padding : .5rem 1.5rem;                 /*0.9rem de padding en haut et en bas. 2.5rem de padding sur les cotes*/
     font-size : medium;
     background-color : var(--listen1);
     color: var(--titre);
@@ -115,8 +105,8 @@ h1{font-weight: 500;}
 .listen2{                                   /*défintion des boutons pour spotify et deezer*/
     border-radius: 2rem;                    /*arrondi des angles*/
     border : none;                          /*le bord est invisible - pas de contour*/
-    font-weight : bolder;
-    padding : .9rem 2.5rem;                 /*0.9rem de padding en haut et en bas. 2.5rem de padding sur les cotes*/
+    font-weight : 700;
+    padding : .5rem 1.5rem;                 /*0.9rem de padding en haut et en bas. 2.5rem de padding sur les cotes*/
     font-size : medium;
 }
 
@@ -154,22 +144,33 @@ h1{font-weight: 500;}
 
 .imgA{
     margin : 0rem;
-    padding-top: 80%;
+    padding-top: 100%;          /*Le paragraphe prend donc l'espace d'un carré. Cet espace sera recouvert avec un background cover*/
 }
 
 .Azn1{
-    background-image: url("https://images-na.ssl-images-amazon.com/images/I/71Tdc83uvqL._SL1300_.jpg");
-    background-size: cover;
-    border : none;
-}
-.Azn2{
     background-image: url("https://images-na.ssl-images-amazon.com/images/I/714j%2B%2BlFODL._SL1300_.jpg");
     background-size: cover;
     border : none;
+    position : relative;            /*Pour que son enfant (le bouton listen) se réfaire à lui dans sa position*/
 }
 
-.Azn1 .listen{  }
-.Azn2 .listen{  }
+.Azn2{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/71Tdc83uvqL._SL1300_.jpg");
+    background-size: cover;
+    border : none;
+    position : relative;
+}
+
+.Azn1 a{
+    position: absolute;         /*se refaire à son parent dans son positionnement*/
+    bottom: 1rem;               /*se situe à 1rem au dessus de la bordure basse du parent*/
+    left : 1rem;                /*se situe à 1rem à gauche de la bordure gauche du parent*/
+}
+.Azn2 a{
+    position : absolute;
+    top: 1rem;
+    right: 1rem;
+}
 
 
 /*Spotify*/
@@ -213,7 +214,7 @@ h1{font-weight: 500;}
     display : flex;
     flex-direction: column;
     align-items: left ;
-    color : white;
+    color : white;                  /*Pas besoin de variable, il est toujours blanc*/
 }
 
 .YoutTitre{                                    /*logo + nom "Youtube"*/
@@ -223,7 +224,10 @@ h1{font-weight: 500;}
     gap:1.5rem;                 /*1.5rem entre le logo et le nom*/
 }
 
-.abos{margin-top: -0.5rem}                     /*le nb d'abos et la chaine (qui disparaissent format mobile)*/
+.ChaineYT{font-weight: 700;}
+
+.abos{
+    margin-top: -0.5rem;}                     /*le nb d'abos et la chaine (qui disparaissent format mobile)*/
 
 /*FIN YOUTUBE*/
 
@@ -343,9 +347,9 @@ input{opacity: 30%}                             /*par défault, le texte de remp
     .disparait{display : none }                 /*Fait disparaitre les éléments de class "disparait",
                                                 sans les prendre en compte dans les calculs de positionnement du reste*/
 
-    h2{font-size : medium}              /*Nouvelle définition des tailles de police*/
-    h3{font-size: small;}
-    p{font-size: x-small;}
+    h2{font-size : large}              /*Nouvelle définition des tailles de police*/
+    h3{font-size: medium;}
+    p{font-size: small;}
     
     .logo{
         max-width: 24px;                /*rétrécie les logos sur mobile*/
@@ -381,7 +385,7 @@ input{opacity: 30%}                             /*par défault, le texte de remp
     .flop{
         margin : 0rem;              /*pas de margin parce que tout est centralisé dans les gap du flux*/
         padding: .5rem;
-        gap : .5rem .3rem          /*0.5rem de gap entre des éléments au dessus les uns des autres
+        gap : .5rem .3rem   ;       /*0.5rem de gap entre des éléments au dessus les uns des autres
                                     et 0.3rem de gap entre des éléments cotes à cotes*/
     }
 
@@ -397,10 +401,12 @@ input{opacity: 30%}                             /*par défault, le texte de remp
     .Spotify{flex-direction: row;}
     .Deezer{flex-direction: row;}
 
+    .news{padding : 1rem .5rem}
     .mail{padding : .2rem .5rem}
 
     h3{margin : 0rem}
     .ButtGo{padding : .3rem}
+
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
